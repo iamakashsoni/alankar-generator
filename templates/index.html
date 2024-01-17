@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alankar Notation Generator</title>
+    <script>
+        function updateSwarNotation(buttonValue, swarCharacter) {
+            var swarNotationInput = document.getElementById("swar_notation");
+            swarNotationInput.value += swarCharacter;
+            updateHiddenInput(buttonValue);
+        }
+
+        function updateHiddenInput(buttonValue) {
+            var hiddenInput = document.getElementById("hidden_swar_notation");
+            hiddenInput.value += buttonValue;
+        }
+
+        function clearSwarNotation() {
+            var swarNotationInput = document.getElementById("swar_notation");
+            var hiddenInput = document.getElementById("hidden_swar_notation");
+            swarNotationInput.value = "";
+            hiddenInput.value = "";
+        }
+    </script>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        div.actionButton {
+            display: flex;
+            flex-direction: row !important;
+            padding: 10px;
+            margin: 10px;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/generate" method="POST">
+        <h1>अलंकार Generator</h1>
+        <input type="text" id="swar_notation" name="swar_notation" readonly placeholder="Swars" required/>
+        <div class="swars">
+            <button type="button" class="swar" value="0" onclick="updateSwarNotation('0', 'सा')">
+          सा
+        </button>
+            <button type="button" class="swar" value="1" onclick="updateSwarNotation('1', 'रे')">
+          रे
+        </button>
+            <button type="button" class="swar" value="2" onclick="updateSwarNotation('2', 'ग')">
+          ग
+        </button>
+            <button type="button" class="swar" value="3" onclick="updateSwarNotation('3', 'म')">
+          म
+        </button>
+            <button type="button" class="swar" value="4" onclick="updateSwarNotation('4', 'प')">
+          प
+        </button>
+            <button type="button" class="swar" value="5" onclick="updateSwarNotation('5', 'ध')">
+          ध
+        </button>
+            <button type="button" class="swar" value="6" onclick="updateSwarNotation('6', 'नि')">
+          नि
+        </button>
+            <button type="button" class="swar" value="7" onclick="updateSwarNotation('7', 'सां')">
+          सां
+        </button>
+        </div>
+        <div class="actionButton">
+            <button type="submit" class="submit-button">Generate</button>
+            <button type="button" class="clear-button" onclick="clearSwarNotation()">
+          Clear
+        </button>
+        </div>
+
+        <input type="hidden" id="hidden_swar_notation" name="hidden_swar_notation" />
+    </form>
+</body>
+
+</html>
